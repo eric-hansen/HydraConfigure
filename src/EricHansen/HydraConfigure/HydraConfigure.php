@@ -71,9 +71,13 @@ class HydraConfigure {
      */
     private function _api_call($uri, $data = array(), $method="GET"){
         $args = $data;
+        $this->raw_args = $data;
 
         if($method == "GET"){
-            $uri .= http_build_query($args);
+            if(substr($uri, -1) != "/")
+                $uri .= "/";
+
+            $uri .= implode(",", $args);
             $args = null;
         }
 
@@ -91,7 +95,9 @@ class HydraConfigure {
         if(isset($this->token))
             $curl_opts[CURLOPT_HTTPHEADER] = array('Authorization' => "Bearer ".$this->token);
 
-        $ch = curl_init("http://elt.li/" . $uri);
+        $this->url = "http://elt.li/" . $uri;
+
+        $ch = curl_init($this->url);
         curl_setopt_array(
             $ch,
             $curl_opts
@@ -103,8 +109,22 @@ class HydraConfigure {
         curl_close($ch);
 
         $resp = json_decode($resp);
-        $resp->http_code = $http_code;
+
+        if($resp)
+            $resp->http_code = $http_code;
+        else{
+            $resp = (object)array('http_code' => $http_code, 'res' => $resp);
+        }
 
         return $resp;
+    }
+
+    public function getLastRequest(){
+        $dump = new \stdClass();
+        $dump->url = $this->url;
+        $dump->token = $this->token;
+        $dump->raw_data = $this->raw_args;
+
+        return $dump;
     }
 }

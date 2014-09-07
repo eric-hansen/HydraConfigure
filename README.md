@@ -43,9 +43,4 @@ $hydra->put("watch", array("config_to_watch"));
 
 ## TO DO
 
-### Unable to pass arguments to some API calls
-
-As the HydraConfigure class functions via __call(), passing arguments isn't exactly easy for some features.
-
-I.e.: right now you cannot call ```$hydra->get("config", array("prod,qa"));``` to get the production or QA configs,
-this is partially in fault of PHP.  However, there are workarounds that will be implemented.
+Nothing as of right now.
