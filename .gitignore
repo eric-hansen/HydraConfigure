@@ -1,0 +1,4 @@
+vendor/
+composer.lock
+src/EricHansen/HydraConfigure/config.json
+.idea/

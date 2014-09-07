@@ -1,0 +1,13 @@
+{
+    "name": "eric-hansen/hydraconfigure",
+    "description": "PHP wrapper for HydraConfig storage system.",
+    "license": "MIT",
+    "require-dev": {
+        "phpunit/phpunit" : "4.2.*"
+    },
+    "autoload": {
+        "psr-4" : {
+            "EricHansen\\HydraConfigure\\": "src/EricHansen/HydraConfigure/"
+        }
+    }
+}
