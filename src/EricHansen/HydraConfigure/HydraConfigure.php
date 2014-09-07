@@ -93,7 +93,7 @@ class HydraConfigure {
          * Add Bearer auth token HTTP header here...
          */
         if(isset($this->token))
-            $curl_opts[CURLOPT_HTTPHEADER] = array('Authorization' => "Bearer ".$this->token);
+            $curl_opts[CURLOPT_HTTPHEADER] = array("Authorization: Bearer ".$this->token);
 
         $this->url = "http://elt.li/" . $uri;
 
