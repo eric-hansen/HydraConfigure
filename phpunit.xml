@@ -7,8 +7,7 @@
 >
         <testsuites>
             <testsuite name="Authentication">
-                <directory>tests/Auth</directory>
-                <file>AuthTest.php</file>
+                <directory>tests/*</directory>
             </testsuite>
         </testsuites>
 </phpunit>

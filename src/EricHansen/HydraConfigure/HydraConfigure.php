@@ -108,7 +108,7 @@ class HydraConfigure {
 
         curl_close($ch);
 
-        $resp = json_decode($resp);
+        $resp = (object)json_decode($resp);
 
         if($resp)
             $resp->http_code = $http_code;
